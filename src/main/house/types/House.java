@@ -89,9 +89,11 @@ public abstract class House {
 
 
 
+    // Provided custom toString() for understandable printing.
     @Override
     public String toString() {
-        return "House{" +
+        return  this.getClass().getSimpleName() +
+                "{" +
                 "price=" + price +
                 ", squareMeters = " + squareMeters +
                 ", otherRooms = " + otherRooms.size() +

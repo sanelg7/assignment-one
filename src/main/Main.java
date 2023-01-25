@@ -3,6 +3,7 @@ import house.util.HouseList;
 
 import service.HouseService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -24,8 +25,19 @@ public class Main {
         System.out.println("Passing house list to the house service...\n");
         houseService.setHouseList(houseList);
 
+        // Demonstration for getting houses.
+        // Only ran for all types of houses, and selected the first 3 to print for readability.
+        List<House> houses = houseList.getHouses();
+
+        System.out.println("Printing 3 houses for demonstrating getHouses()");
+        for (int i=0;i<3;i++) {
+
+            System.out.println("House : " + houses.get(i));
+        }
+
+
         // Demonstration for methods that sum prices for different types of houses
-        System.out.println("Sum of all regular house prices: "
+        System.out.println("\nSum of all regular house prices: "
                 + houseService.sumRegularHousePrices());
 
         System.out.println("Sum of all summer house prices: "
