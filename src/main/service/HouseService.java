@@ -1,11 +1,10 @@
 package service;
 
-import house.types.RegularHouse;
-import house.types.SummerHouse;
-import house.types.Villa;
+import house.types.House;
 import house.util.HouseList;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class HouseService {
 
@@ -20,30 +19,30 @@ public class HouseService {
     // Method to calculate total House (all types of houses) prices.
     public int sumHousePrices(){
 
-        int totalPrice = houseList.getHouses().stream()
+        return houseList.getHouses().stream()
                 .map(x -> x.getPrice()).reduce(0, Integer::sum);
-        return totalPrice;
+
     }
 
-    public int sumRegularHousePrices(List<RegularHouse> regularHouses){
+    public int sumRegularHousePrices(){
 
-        int totalPrice = houseList.getRegularHouses().stream()
+        return  houseList.getRegularHouses().stream()
                 .map(x -> x.getPrice()).reduce(0, Integer::sum);
-        return totalPrice;
+
     }
 
-    public int sumSummerHousePrices(List<SummerHouse> summerHouses){
+    public int sumSummerHousePrices(){
 
-        int totalPrice = houseList.getSummerHouses().stream()
+        return houseList.getSummerHouses().stream()
                 .map(x -> x.getPrice()).reduce(0, Integer::sum);
-        return totalPrice;
+
     }
 
-    public int sumVillaPrices(List<Villa> villas){
+    public int sumVillaPrices(){
 
-        int totalPrice = houseList.getVillas().stream()
+        return houseList.getVillas().stream()
                 .map(x -> x.getPrice()).reduce(0, Integer::sum);
-        return totalPrice;
+
     }
 
     // Method to calculate average RegularHouse squareMeters
@@ -91,7 +90,13 @@ public class HouseService {
     }
 
     // Method to filter all types of houses according to their room and living room count
-    // Assumed sort by filter
+    public List<House> filterHouses(int livingRooms, int otherRooms){
+        return houseList.getHouses()
+                .stream()
+                .filter(x -> x.getOtherRooms().size() == otherRooms
+                        && x.getLivingRooms().size() == livingRooms)
+                .collect(Collectors.toList());
+    }
 
 
     public HouseList getHouseList() {

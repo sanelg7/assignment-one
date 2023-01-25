@@ -16,42 +16,40 @@ public class HouseList {
 
     public HouseList (int houseOfEachType) {
         addHouses(houseOfEachType);
-        System.out.println(this.houses.size());
     }
+
 
     // Helper method to populate HouseList
     public void addHouses (int houseOfEachType) {
         // Random variable for price, square meters and multiplier for different types of Houses
         Random random = new Random();
-        int price, squareMeters, regularHouseMul, summerHouseMul, villaMul;
+        int price, regularHouseMul, summerHouseMul, villaMul;
 
         // Creating Houses with random price and square meters.
         // and populating the House list.
         for (int i=0;i<houseOfEachType;i++) {
 
             // Random value for price
-            price = random.nextInt(200000,400000);
-            // Random value for square meters
-            squareMeters = random.nextInt(10,50);
+            price = random.ints(200000,400000).findFirst().getAsInt();
 
             // RegularHouse multiplier, and creating RegularHouse object
-            regularHouseMul = random.nextInt(4,8);
+            regularHouseMul = random.ints(4,8).findFirst().getAsInt();
             House regularHouse =
                     new RegularHouse(regularHouseMul*price);
 
             // SummerHouse multiplier, and creating SummerHouse object
-            summerHouseMul = random.nextInt(5,10);
-            House summerHourse =
+            summerHouseMul = random.ints(5,10).findFirst().getAsInt();
+            House summerHouse =
                     new SummerHouse(summerHouseMul*price);
 
             // Villa multiplier, and creating Villa object
-            villaMul = random.nextInt(8,16);
+            villaMul = random.ints(8,16).findFirst().getAsInt();
             House villa =
                     new Villa(villaMul*price);
 
             // Adding them to the list
             houses.add(regularHouse);
-            houses.add(summerHourse);
+            houses.add(summerHouse);
             houses.add(villa);
         }
     }
@@ -111,8 +109,12 @@ public class HouseList {
 
     @Override
     public String toString() {
-        return "HouseList{" +
-                "houses=" + houses +
-                '}';
+        StringBuilder builder = new StringBuilder();
+        String s;
+        for (House h: houses) {
+            s = h.toString() + "\n";
+            builder.append(s);
+        }
+        return builder.toString();
     }
 }

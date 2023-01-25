@@ -11,12 +11,17 @@ public abstract class House {
     private int price;
     private int squareMeters;
 
-    private List<Room> rooms;
+    private List<Room> otherRooms;
+    private List<LivingRoom> livingRooms;
+
+    public House() {
+    }
+
     public House(int price) {
         this.price = price;
         addRooms();
         // Summing the square meters of rooms from rooms list
-        squareMeters = rooms.stream().
+        squareMeters = otherRooms.stream().
                 map(x -> x.getSquareMeters()).reduce(0, Integer::sum);
     }
 
@@ -25,21 +30,28 @@ public abstract class House {
 
         Random random = new Random();
         int roomSize;
-        int livingRoomCount = random.nextInt(0,2);
-        int otherRoomCount = random.nextInt(1, 5);
 
-        rooms = new ArrayList<>();
+        // Not checking if present for optional value as parameters are hard coded.
+        int livingRoomCount =
+                random.ints(1,4).findFirst().getAsInt();
+        int otherRoomCount =
+                random.ints(1, 8).findFirst().getAsInt();
+
+        otherRooms = new ArrayList<>();
+        livingRooms = new ArrayList<>();
         for (int i=0;i<livingRoomCount;i++) {
 
             // random room size
-            roomSize = random.nextInt(30, 100);
-            rooms.add(new LivingRoom(roomSize));
+            // Not checking if present for optional value as parameters are hard coded.
+            roomSize = random.ints(30, 100).findFirst().getAsInt();
+            livingRooms.add(new LivingRoom(roomSize));
         }
         for (int j=0;j<otherRoomCount;j++) {
 
             // random room size
-            roomSize = random.nextInt(10, 80);
-            rooms.add(new Room(roomSize));
+            // Not checking if present for optional value as parameters are hard coded.
+            roomSize = random.ints(10, 80).findFirst().getAsInt();
+            otherRooms.add(new Room(roomSize));
         }
     }
 
@@ -59,20 +71,31 @@ public abstract class House {
         this.squareMeters = squareMeters;
     }
 
-    public List<Room> getRooms() {
-        return rooms;
+    public List<Room> getOtherRooms() {
+        return otherRooms;
     }
 
-    public void setRooms(List<Room> rooms) {
-        this.rooms = rooms;
+    public void setOtherRooms(List<Room> otherRooms) {
+        this.otherRooms = otherRooms;
     }
 
-    // For printing
+    public List<LivingRoom> getLivingRooms() {
+        return livingRooms;
+    }
+
+    public void setLivingRooms(List<LivingRoom> livingRooms) {
+        this.livingRooms = livingRooms;
+    }
+
+
+
     @Override
     public String toString() {
         return "House{" +
                 "price=" + price +
-                ", squareMeters=" + squareMeters +
+                ", squareMeters = " + squareMeters +
+                ", otherRooms = " + otherRooms.size() +
+                ", livingRooms = " + livingRooms.size() +
                 '}';
     }
 }
