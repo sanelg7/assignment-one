@@ -1,9 +1,7 @@
 import house.types.House;
 import house.util.HouseList;
-
 import service.HouseService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -30,7 +28,7 @@ public class Main {
         List<House> houses = houseList.getHouses();
 
         System.out.println("Printing 3 houses for demonstrating getHouses()");
-        for (int i=0;i<3;i++) {
+        for (int i = 0; i < 3; i++) {
 
             System.out.println("House : " + houses.get(i));
         }
@@ -72,7 +70,7 @@ public class Main {
         List<House> filteredHouses = houseService.filterHouses(livingRoomCount, roomCount);
         System.out.println("Found " + filteredHouses.size() + " such house(s). Details below: ");
         // Printing filtered houses
-        for (House h:filteredHouses) {
+        for (House h : filteredHouses) {
             System.out.println(h);
         }
 

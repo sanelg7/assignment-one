@@ -4,7 +4,8 @@ public class Room {
 
     private int squareMeters;
 
-    public Room(){}
+    public Room() {
+    }
 
     public Room(int squareMeters) {
         this.squareMeters = squareMeters;

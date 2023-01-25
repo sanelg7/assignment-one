@@ -33,20 +33,20 @@ public abstract class House {
 
         // Not checking if present for optional value as parameters are hard coded.
         int livingRoomCount =
-                random.ints(1,4).findFirst().getAsInt();
+                random.ints(1, 4).findFirst().getAsInt();
         int otherRoomCount =
                 random.ints(1, 8).findFirst().getAsInt();
 
         otherRooms = new ArrayList<>();
         livingRooms = new ArrayList<>();
-        for (int i=0;i<livingRoomCount;i++) {
+        for (int i = 0; i < livingRoomCount; i++) {
 
             // random room size
             // Not checking if present for optional value as parameters are hard coded.
             roomSize = random.ints(30, 100).findFirst().getAsInt();
             livingRooms.add(new LivingRoom(roomSize));
         }
-        for (int j=0;j<otherRoomCount;j++) {
+        for (int j = 0; j < otherRoomCount; j++) {
 
             // random room size
             // Not checking if present for optional value as parameters are hard coded.
@@ -88,11 +88,10 @@ public abstract class House {
     }
 
 
-
     // Provided custom toString() for understandable printing.
     @Override
     public String toString() {
-        return  this.getClass().getSimpleName() +
+        return this.getClass().getSimpleName() +
                 " {" +
                 "price=" + price +
                 ", squareMeters = " + squareMeters +

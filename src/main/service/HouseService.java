@@ -10,35 +10,36 @@ public class HouseService {
 
     private HouseList houseList;
 
-    public HouseService(){}
+    public HouseService() {
+    }
 
     public HouseService(HouseList houseList) {
         this.houseList = houseList;
     }
 
     // Method to calculate total House (all types of houses) prices.
-    public int sumHousePrices(){
+    public int sumHousePrices() {
 
         return houseList.getHouses().stream()
                 .map(x -> x.getPrice()).reduce(0, Integer::sum);
 
     }
 
-    public int sumRegularHousePrices(){
+    public int sumRegularHousePrices() {
 
-        return  houseList.getRegularHouses().stream()
+        return houseList.getRegularHouses().stream()
                 .map(x -> x.getPrice()).reduce(0, Integer::sum);
 
     }
 
-    public int sumSummerHousePrices(){
+    public int sumSummerHousePrices() {
 
         return houseList.getSummerHouses().stream()
                 .map(x -> x.getPrice()).reduce(0, Integer::sum);
 
     }
 
-    public int sumVillaPrices(){
+    public int sumVillaPrices() {
 
         return houseList.getVillas().stream()
                 .map(x -> x.getPrice()).reduce(0, Integer::sum);
@@ -46,7 +47,7 @@ public class HouseService {
     }
 
     // Method to calculate average RegularHouse squareMeters
-    public double avgRegularHouseSize(){
+    public double avgRegularHouseSize() {
 
         double houseCount = houseList.getRegularHouses().size();
 
@@ -57,7 +58,7 @@ public class HouseService {
     }
 
     // Method to calculate average SummerHouse squareMeters
-    public double avgSummerHouseSize(){
+    public double avgSummerHouseSize() {
 
         double houseCount = houseList.getSummerHouses().size();
 
@@ -68,7 +69,7 @@ public class HouseService {
     }
 
     // Method to calculate average Villa squareMeters
-    public double avgVillaSize(){
+    public double avgVillaSize() {
 
         double houseCount = houseList.getVillas().size();
 
@@ -79,7 +80,7 @@ public class HouseService {
     }
 
     // Method to calculate average House (all types of houses) squareMeters
-    public double avgHouseSize(){
+    public double avgHouseSize() {
 
         double houseCount = houseList.getHouses().size();
 
@@ -90,7 +91,7 @@ public class HouseService {
     }
 
     // Method to filter all types of houses according to their room and living room count
-    public List<House> filterHouses(int livingRooms, int otherRooms){
+    public List<House> filterHouses(int livingRooms, int otherRooms) {
         return houseList.getHouses()
                 .stream()
                 .filter(x -> x.getOtherRooms().size() == otherRooms

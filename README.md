@@ -1,10 +1,12 @@
 # assignment-one
+
 Repository for DefineX Spring Practicum - Assignment 1
 
 Implemented three house types :
 Regular house, villa, summer house
 
 Created a service class that includes methods for:
+
 - Creating houses with random room counts, prices and sizes.
 - Getting different types of houses.
 - Summing prices for different types of houses.

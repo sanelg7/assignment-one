@@ -14,38 +14,38 @@ public class HouseList {
     // Creating a list of Houses
     List<House> houses = new ArrayList<>();
 
-    public HouseList (int houseOfEachType) {
+    public HouseList(int houseOfEachType) {
         addHouses(houseOfEachType);
     }
 
 
     // Helper method to populate HouseList
-    public void addHouses (int houseOfEachType) {
+    public void addHouses(int houseOfEachType) {
         // Random variable for price, square meters and multiplier for different types of Houses
         Random random = new Random();
         int price, regularHouseMul, summerHouseMul, villaMul;
 
         // Creating Houses with random price and square meters.
         // and populating the House list.
-        for (int i=0;i<houseOfEachType;i++) {
+        for (int i = 0; i < houseOfEachType; i++) {
 
             // Random value for price
-            price = random.ints(200000,400000).findFirst().getAsInt();
+            price = random.ints(200000, 400000).findFirst().getAsInt();
 
             // RegularHouse multiplier, and creating RegularHouse object
-            regularHouseMul = random.ints(4,8).findFirst().getAsInt();
+            regularHouseMul = random.ints(4, 8).findFirst().getAsInt();
             House regularHouse =
-                    new RegularHouse(regularHouseMul*price);
+                    new RegularHouse(regularHouseMul * price);
 
             // SummerHouse multiplier, and creating SummerHouse object
-            summerHouseMul = random.ints(5,10).findFirst().getAsInt();
+            summerHouseMul = random.ints(5, 10).findFirst().getAsInt();
             House summerHouse =
-                    new SummerHouse(summerHouseMul*price);
+                    new SummerHouse(summerHouseMul * price);
 
             // Villa multiplier, and creating Villa object
-            villaMul = random.ints(8,16).findFirst().getAsInt();
+            villaMul = random.ints(8, 16).findFirst().getAsInt();
             House villa =
-                    new Villa(villaMul*price);
+                    new Villa(villaMul * price);
 
             // Adding them to the list
             houses.add(regularHouse);
@@ -83,6 +83,7 @@ public class HouseList {
         }
         return summerHouses;
     }
+
     // Get Villa objects from the list
     public List<Villa> getVillas() {
         List<Villa> villas = new ArrayList<>();
@@ -111,7 +112,7 @@ public class HouseList {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         String s;
-        for (House h: houses) {
+        for (House h : houses) {
             s = h.toString() + "\n";
             builder.append(s);
         }
