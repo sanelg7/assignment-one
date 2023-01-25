@@ -93,7 +93,7 @@ public abstract class House {
     @Override
     public String toString() {
         return  this.getClass().getSimpleName() +
-                "{" +
+                " {" +
                 "price=" + price +
                 ", squareMeters = " + squareMeters +
                 ", otherRooms = " + otherRooms.size() +
